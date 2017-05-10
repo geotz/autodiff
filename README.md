@@ -28,9 +28,16 @@ This is a proof-of-concept. Using modern c++14 techniques we are able to perform
 * *Nothing* is stored inside the type (empty types). Other approaches store the value *in* the symbol. We store nothing:
   * substitution `subs(const Lvalue<Ts,Is>&...)` will deduce an evaluation sequence at the point of call
   * as a variadic function, it works with *any* type
-* Trivial simplifications are supported: `x-x=0`, `x*0=0`, `1*x=x`, `x+x=2*x` etc...
-* `static_assert` can catch errors at compile-time like trying to substitue a variable twice or not at all.
+* Trivial simplifications are supported: `x-x=0`, `x*0=0`, `1*x=x`, `x+x=2*x` etc ...
+* `static_assert` can catch errors at compile-time like:
+  * trying to substitue a variable twice or not at all
+  * division by 0 or undefined quantity 0/0
 * Multi-variate and multi-degree differentiation is again a variadic function.
 * Fractions are simplified via their GCD at compile time.
 * Suffix operator `_K` for constants.
 
+## Dessert
+
+* I have used CRTP to block funny type deductions.
+* I had to fiddle a little bit with SFINAE, but I tried to limit its usage (might be unavoidable since I'm exploiting overload resolution...)
+* *Of course* everything is `constexpr` :)
