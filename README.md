@@ -1,5 +1,5 @@
 # autodiff
-c++14 compile-time symbolic differentiation
+c++14 compile-time symbolic differentiation with zero memory footprint
 
 This is a proof-of-concept. Using modern c++14 techniques we are able to perform symbolic calculus and symbolic differentiation.
 
